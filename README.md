@@ -16,4 +16,11 @@
 ### Simulating Slow Subscriber
 <img src = "images/SlowSubscriber.png">
 
-Dengan mensimulasikan slow subscriber dan coba menjalankan publisher beberapa kali dalam waktu yang singkat, queued message meningkat hingga 20 messages. Mengapa ini terjadi? Karena subscriber tidak dapat menerima message yang dikirimkan oleh publisher dengan cepat (karena terdapat jeda yang disimulasikan oleh `thread::sleep`), sehingga message yang dikirimkan oleh publisher akan ditampung di dalam queue sampai subscriber dapat menerimanya.
+Dengan mensimulasikan slow subscriber dan coba menjalankan publisher beberapa kali dalam waktu yang singkat, queued message meningkat hingga 20 messages. Mengapa ini terjadi? Karena subscriber tidak dapat menerima message yang dikirimkan oleh publisher dengan cepat (karena terdapat jeda yang disimulasikan oleh `thread::sleep`), sehingga message yang dikirimkan oleh publisher akan ditampung di dalam queue sampai subscriber dapat menerimanya.<br>
+
+
+### Running Three or More Subscribers
+<img src = "images/Terminal3Subscribers.png">
+<img src = "images/Rabbit3Subscribers.png">
+
+Pada saat `cargo run` publisher dijalankan, ketiga subscriber memproses pesan yang berbeda-beda. Hal ini terjadi karena RabbitMQ akan mendistribusikan pesan yang diterima oleh subscriber secara merata pada 3 subscribers yang berjalan secara bersamaan sehingga pengiriman pesan akan berjalan dengan lebih cepat.
