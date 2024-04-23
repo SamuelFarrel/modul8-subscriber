@@ -11,3 +11,9 @@
 - `guest` pertama adalah username pengguna yang digunakan untuk autentikasi ke broker
 - `guest` kedua adalah password/kata sandi pengguna yang digunakan untuk autentikasi ke broker
 - `localhost:5672` adalah menyatakan alamat host dan port yang digunakan untuk koneksi ke broker AMQP
+
+## RabbitMQ as message broker
+### Simulating Slow Subscriber
+<img src = "images/SlowSubscriber.png">
+
+Dengan mensimulasikan slow subscriber dan coba menjalankan publisher beberapa kali dalam waktu yang singkat, queued message meningkat hingga 20 messages. Mengapa ini terjadi? Karena subscriber tidak dapat menerima message yang dikirimkan oleh publisher dengan cepat (karena terdapat jeda yang disimulasikan oleh `thread::sleep`), sehingga message yang dikirimkan oleh publisher akan ditampung di dalam queue sampai subscriber dapat menerimanya.
